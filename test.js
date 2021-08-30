@@ -38,6 +38,31 @@ describe('Tasks API ', () =>{
 
 // Test the GET by(id) route
 
+describe('GET /polo:id', ()=>{
+   it('It should GET all task by ID ', (done)=>{
+      const taskid = 1
+      chai.request(server)
+      .get('/get'  + taskId)
+      .end((err,response)=>{
+        response.should.have.status(200);
+        response.body.should.be.a('object');
+        response.body.should.have.property('id');
+        response.body.should.have.property('name');
+         done();
+      })
+   })
+   it('It should GET all task by ID ', (done)=>{
+      const taskid = 231;x
+      chai.request(server)
+      .get('/get'  + taskId)
+      .end((err,response)=>{
+        response.should.have.status(404);
+        response.body.should.be.eq('the task  with the provided ID does not match');
+         done();
+      })
+   })
+})
+
 
 // Test the POST route
 
